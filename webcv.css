@@ -4,7 +4,6 @@
     --text: #374151;
     --card-bg: #ffffff;
     --nav-bg: rgba(255, 255, 255, 0.9);
-    --input-bg: #f3f4f6;
 }
 
 .dark-theme {
@@ -12,7 +11,6 @@
     --text: #f1f5f9;
     --card-bg: #1e293b;
     --nav-bg: rgba(15, 23, 42, 0.9);
-    --input-bg: #334155;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; transition: 0.3s ease; }
@@ -22,13 +20,13 @@ body {
     background-color: var(--bg);
     color: var(--text);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
+/* NAVBAR FIXED */
 nav {
-    padding: 15px 0;
+    padding: 12px 0;
     background: var(--nav-bg);
     backdrop-filter: blur(10px);
     position: sticky;
@@ -37,59 +35,67 @@ nav {
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-nav .container { display: flex; justify-content: space-between; align-items: center; }
-nav ul { display: flex; list-style: none; align-items: center; gap: 25px; }
-nav a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; }
-.btn-theme { background: none; border: none; font-size: 1.2rem; cursor: pointer; }
-.btn-cv { background: var(--primary); color: #fff !important; padding: 10px 20px; border-radius: 8px; }
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
 
-.hero { padding: 80px 0; min-height: 80vh; display: flex; align-items: center; }
-.hero-content { display: flex; align-items: center; justify-content: space-between; gap: 50px; text-align: left; width: 100%; }
-.hero-text { flex: 1; }
-.hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; color: var(--text); }
+nav .logo { font-weight: 700; font-size: 1.2rem; color: var(--primary); }
 
-/* Social Links */
-.social-links { margin-bottom: 25px; display: flex; gap: 20px; font-size: 1.5rem; }
-.social-links a { color: var(--text); transition: 0.3s; }
-.social-links a:hover { color: var(--primary); transform: translateY(-3px); }
+.nav-links { display: flex; list-style: none; align-items: center; gap: 15px; }
 
-.hero-image { flex: 1; display: flex; justify-content: center; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.85rem; }
+
+.btn-cv { background: var(--primary); color: #fff !important; padding: 6px 12px; border-radius: 6px; }
+
+.btn-theme { background: none; border: none; font-size: 1.1rem; cursor: pointer; }
+
+/* HERO */
+.hero { padding: 40px 0; min-height: 80vh; display: flex; align-items: center; }
+.hero-content { display: flex; align-items: center; justify-content: space-between; gap: 40px; width: 100%; }
+.hero-text { flex: 1.2; }
+.hero h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 15px; color: var(--text); }
+
+.social-links { margin-bottom: 20px; display: flex; gap: 15px; font-size: 1.3rem; }
+.social-links a { color: var(--text); }
+
 .hero-image img {
-    width: 320px;
-    height: 320px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
-    border-radius: 30px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    border: 8px solid var(--card-bg);
+    border-radius: 25px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    border: 6px solid var(--card-bg);
 }
 
-.skills-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-.skill-tag { background: var(--card-bg); color: var(--primary); border: 1.5px solid var(--primary); padding: 8px 20px; border-radius: 50px; font-weight: 600; font-size: 0.85rem; }
-.skill-tag:hover { background: var(--primary); color: #fff; }
+/* CARDS & SKILLS */
+.skills-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.skill-tag { background: var(--card-bg); color: var(--primary); border: 1.5px solid var(--primary); padding: 6px 15px; border-radius: 50px; font-weight: 600; font-size: 0.8rem; }
 
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-.project-card { background: var(--card-bg); padding: 35px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-.project-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.project-card { background: var(--card-bg); padding: 25px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.05); }
 
-/* Contact Form */
-.contact-box { max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-.contact-box input, .contact-box textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: none;
-    background: var(--input-bg);
-    color: var(--text);
-    font-family: inherit;
-}
+.btn-primary, .btn-secondary { padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; }
+.btn-primary { background: var(--primary); color: #fff; margin-right: 10px; }
+.btn-secondary { border: 2px solid var(--primary); color: var(--primary); }
 
-.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
-.reveal.active { opacity: 1; transform: translateY(0); }
-footer { padding: 60px 0; text-align: center; opacity: 0.5; font-size: 0.85rem; }
-
+/* --- PERBAIKAN HP (RESPONSIVE) --- */
 @media (max-width: 768px) {
-    .hero-content { flex-direction: column-reverse; text-align: center; }
-    .hero h1 { font-size: 2.5rem; }
+    .nav-links { gap: 10px; }
+    .nav-links a:not(.btn-cv) { font-size: 0.75rem; } /* Kecilin font menu lain */
+    .btn-cv { padding: 5px 10px; font-size: 0.75rem !important; } /* Tombol CV jadi pendek */
+    
+    .hero-content { flex-direction: column-reverse; text-align: center; gap: 30px; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-image img { width: 220px; height: 220px; }
     .social-links { justify-content: center; }
+    .hero-btns { display: flex; flex-direction: column; gap: 10px; }
+    .btn-primary { margin-right: 0; }
 }
+
+/* Buat layar super kecil */
+@media (max-width: 400px) {
+    nav .logo { font-size: 1rem; }
+    .nav-links a:not(.btn-cv) { display: none; } /* Sembunyikan teks menu, sisakan ikon/tombol CV */
+}
+
+.reveal { opacity: 0; transform: translateY(20px); transition: 0.6s all ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+footer { padding: 40px 0; text-align: center; opacity: 0.5; font-size: 0.8rem; }
