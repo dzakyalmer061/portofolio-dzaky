@@ -6,18 +6,19 @@
     <title>Dzaky Almer Antoriq | Portfolio Sistem Komputer UNSRI</title>
     <link rel="stylesheet" href="webcv.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="light-theme">
 
     <nav>
-        <div class="container">
+        <div class="container nav-wrapper">
             <div class="logo">DZAKY.</div>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Project</a></li>
                 <li><button id="theme-toggle" class="btn-theme">🌙</button></li>
-                <li><a href="#" class="btn-cv">Download CV</a></li>
+                <li><a href="CV_Dzaky_Almer.pdf" class="btn-cv" download>CV</a></li>
             </ul>
         </div>
     </nav>
@@ -27,8 +28,13 @@
             <div class="hero-text">
                 <h1>Halo, Saya <br><span id="typing-text" style="color: #2563eb;"></span></h1>
                 <p>Mahasiswa Sistem Komputer Universitas Sriwijaya. Berpengalaman dalam Cloud Computing (AlmaLinux), Network Infrastructure, dan Machine Learning.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
                 <div class="hero-btns">
-                    <a href="#projects" class="btn-primary">Lihat Portofolio</a>
+                    <a href="#projects" class="btn-primary">Portofolio</a>
                     <a href="CV_Dzaky_Almer.pdf" class="btn-secondary" download>Download CV</a>
                 </div>
             </div>
@@ -38,7 +44,7 @@
         </div>
     </header>
 
-    <section id="skills" class="container reveal" style="padding: 80px 0; text-align: center;">
+    <section id="skills" class="container reveal" style="padding: 60px 0; text-align: center;">
         <h2 class="section-title">Technical Skills</h2>
         <div class="skills-grid">
             <span class="skill-tag">AlmaLinux 9</span>
@@ -46,7 +52,6 @@
             <span class="skill-tag">Fortinet Security</span>
             <span class="skill-tag">Python & Socket Programming</span>
             <span class="skill-tag">Microprocessors</span>
-            <span class="skill-tag">Data Science</span>
         </div>
     </section>
 
@@ -58,14 +63,14 @@
                     <div class="project-info">
                         <div class="project-tag">Cloud & Server</div>
                         <h3>Automated Server Node</h3>
-                        <p>Implementasi pemrosesan data JSON/XML antar node menggunakan AlmaLinux 9, SSH remote via Paramiko, dan Socket Programming.</p>
+                        <p>Implementasi pemrosesan data JSON/XML antar node menggunakan AlmaLinux 9 dan SSH remote.</p>
                     </div>
                 </div>
                 <div class="project-card reveal">
                     <div class="project-info">
                         <div class="project-tag">Networking</div>
                         <h3>Network Analyst @ PTBA</h3>
-                        <p>Menganalisis dan menyusun laporan infrastruktur jaringan perusahaan selama masa magang di PT Bukit Asam.</p>
+                        <p>Analisis infrastruktur jaringan perusahaan selama masa magang di PT Bukit Asam.</p>
                     </div>
                 </div>
             </div>
@@ -73,11 +78,10 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Dzaky Almer Antoriq - Sistem Komputer UNSRI. Build with ✨</p>
+        <p>&copy; 2026 Dzaky Almer Antoriq - UNSRI. Build with ✨</p>
     </footer>
 
     <script>
-        // --- LOGIKA TYPING EFFECT ---
         const text = "Dzaky Almer Antoriq";
         let index = 0;
         function type() {
@@ -88,11 +92,9 @@
             }
         }
 
-        // --- LOGIKA DARK MODE DENGAN MEMORI (LOCALSTORAGE) ---
         const btn = document.getElementById("theme-toggle");
         const currentTheme = localStorage.getItem("theme");
 
-        // Cek apakah user sebelumnya sudah setel dark mode
         if (currentTheme === "dark") {
             document.body.classList.add("dark-theme");
             btn.innerHTML = "☀️";
@@ -100,7 +102,6 @@
 
         btn.addEventListener("click", function() {
             document.body.classList.toggle("dark-theme");
-            
             let theme = "light";
             if (document.body.classList.contains("dark-theme")) {
                 theme = "dark";
@@ -108,14 +109,11 @@
             } else {
                 btn.innerHTML = "🌙";
             }
-            // Simpan pilihan user ke memori browser
             localStorage.setItem("theme", theme);
         });
 
-        // Jalankan typing effect saat load
         window.onload = type;
 
-        // --- LOGIKA SCROLL REVEAL ---
         window.addEventListener('scroll', reveal);
         function reveal() {
             var reveals = document.querySelectorAll('.reveal');
