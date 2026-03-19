@@ -8,15 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="dark-theme">
-
-    <nav>
+<body class="dark-theme"> <nav>
         <div class="container nav-wrapper">
             <div class="logo">DZAKY<span>.</span></div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Work</a></li>
-                <li><button id="theme-toggle" class="btn-theme">🌙</button></li>
+                <li><button id="theme-toggle" class="btn-theme">☀️</button></li>
                 <li><a href="DZAKY ALMER ANTORIQ.pdf" class="btn-cv" download>CV</a></li>
             </ul>
         </div>
@@ -90,29 +88,39 @@
 
     <script>
         const btn = document.getElementById("theme-toggle");
-        const currentTheme = localStorage.getItem("theme");
-        if (currentTheme === "light") {
-            document.body.classList.remove("dark-theme");
+        const body = document.body;
+
+        // Cek Memori Tema
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+            body.classList.remove("dark-theme");
+            body.classList.add("light-theme");
             btn.innerHTML = "🌙";
         }
+
+        // Fungsi Toggle
         btn.addEventListener("click", function() {
-            document.body.classList.toggle("dark-theme");
-            let theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
-            btn.innerHTML = theme === "dark" ? "☀️" : "🌙";
-            localStorage.setItem("theme", theme);
+            if (body.classList.contains("dark-theme")) {
+                body.classList.remove("dark-theme");
+                body.classList.add("light-theme");
+                btn.innerHTML = "🌙";
+                localStorage.setItem("theme", "light");
+            } else {
+                body.classList.remove("light-theme");
+                body.classList.add("dark-theme");
+                btn.innerHTML = "☀️";
+                localStorage.setItem("theme", "dark");
+            }
         });
 
-        window.addEventListener('scroll', reveal);
-        function reveal() {
-            var reveals = document.querySelectorAll('.reveal');
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var revealTop = reveals[i].getBoundingClientRect().top;
-                if (revealTop < windowHeight - 50) {
-                    reveals[i].classList.add('active');
+        // Scroll Reveal
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+                    el.classList.add('active');
                 }
-            }
-        }
+            });
+        });
     </script>
 </body>
 </html>
